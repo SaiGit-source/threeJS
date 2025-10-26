@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Js learning</title>
+</head>
+ 
+<body>
+    <div id="container"></div>
+    <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.158.0/build/three.module.js"
+            }
+            
+        }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        
+        // Scene
+        var scene = new THREE.Scene(); 
+       
+       
+        // Camera
+        var width = window.innerWidth; // width of browser window
+        var height = window.innerHeight; // height of browser window
+        var viewAngle = 75; // view angle for Camera
+        var nearClipping = 0.1; // near view point of camera
+        var farClipping = 9999; // far view point of camera
+ 
+        var camera = new THREE.PerspectiveCamera(viewAngle, width / height, nearClipping, farClipping);
+        camera.position.set(0,0,15)
+ 
+       
+        // Geometry + Material = Mesh 
+        // // BoxGeometry >> CUBE 
+        var cubeGeometry = new THREE.BoxGeometry(1,1,1)
+        // MeshBasicMaterial >> Material for CUBE
+        var cubeMaterial = new THREE.MeshBasicMaterial({color : "red"})      
+        // Mesh = Geometry + Material 
+        var cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
+        
+        cube.position.set(-3,3,0)
+        // Add Mesh in scene     
+        scene.add(cube)
+ 
+ 
+        var cubeGeometry2 = new THREE.BoxGeometry(1,1,1)
+        var cubeMaterial2 = new THREE.MeshBasicMaterial({color : "orange"})      
+        var cube2 = new THREE.Mesh(cubeGeometry2, cubeMaterial2)
+        cube2.position.set(0,3,0)
+        scene.add(cube2)
+ 
+ 
+        var cubeGeometry3 = new THREE.BoxGeometry(1,1,1)
+        var cubeMaterial3 = new THREE.MeshBasicMaterial({color : "blue"})      
+        var cube3 = new THREE.Mesh(cubeGeometry3, cubeMaterial3)
+        cube3.position.set(3,3,0)
+        scene.add(cube3)
+ 
+ 
+        var cubeGeometry4 = new THREE.BoxGeometry(1,1,1)
+        var cubeMaterial4 = new THREE.MeshBasicMaterial({color : "green"})      
+        var cube4 = new THREE.Mesh(cubeGeometry4, cubeMaterial4)
+        cube4.position.set(-3,0,0)
+        scene.add(cube4)
+ 
+        var cubeGeometry5 = new THREE.BoxGeometry(1,1,1)
+        var cubeMaterial5 = new THREE.MeshBasicMaterial({color : "yellow"})      
+        var cube5 = new THREE.Mesh(cubeGeometry5, cubeMaterial5)
+        cube5.position.set(0,0,0)
+        scene.add(cube5)
+ 
+        var cubeGeometry6 = new THREE.BoxGeometry(1,1,1)
+        var cubeMaterial6 = new THREE.MeshBasicMaterial({color : "skyblue"})      
+        var cube6 = new THREE.Mesh(cubeGeometry6, cubeMaterial6)
+        cube6.position.set(3,0,0)
+        scene.add(cube6)
+ 
+        
+        var cubeGeometry7 = new THREE.BoxGeometry(1,1,1)
+        var cubeMaterial7 = new THREE.MeshBasicMaterial({color : "white"})      
+        var cube7 = new THREE.Mesh(cubeGeometry7, cubeMaterial7)
+        cube7.position.set(-3,-3,0)
+        scene.add(cube7)
+ 
+        var cubeGeometry8 = new THREE.BoxGeometry(1,1,1)
+        var cubeMaterial8 = new THREE.MeshBasicMaterial({color : "red"})      
+        var cube8 = new THREE.Mesh(cubeGeometry8, cubeMaterial8)
+        cube8.position.set(0,-3,0)
+        scene.add(cube8)
+ 
+        var cubeGeometry9 = new THREE.BoxGeometry(1,1,1)
+        var cubeMaterial9 = new THREE.MeshBasicMaterial({color : "red"})      
+        var cube9 = new THREE.Mesh(cubeGeometry9, cubeMaterial9)
+        cube9.position.set(3,-3,0)
+        scene.add(cube9)
+ 
+        
+ 
+ 
+        // Renderer
+        var renderer = new THREE.WebGLRenderer({antialias : true});
+        renderer.setSize(width, height);
+ 
+        // JS to get elements
+        var element = document.getElementById("container")
+        // JS to append domElement into our HTML 
+        element.appendChild(renderer.domElement);
+ 
+ 
+ 
+ 
+        function animate() {
+            // cube.rotation.y += 0.01
+            requestAnimationFrame(animate); // this method calls `animate` frame again & again
+            renderer.render(scene, camera);
+        }
+ 
+        animate();
+ 
+    </script>
+</body>
+ 
+</html>
